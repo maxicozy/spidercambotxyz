@@ -57,7 +57,7 @@ void shmove(){
   const float diff1 = dl1 - cl1;
   const float diff2 = dl2 - cl2;
   for (int i = 0; i <= frac; i++) {
-    if (!(cl1 <  dl1 - stepLength) || !(cl1 > dl1 + stepLength)) {
+    if ((cl1 <  dl1 - stepLength) || (cl1 > dl1 + stepLength)) {
       int step1 = (int) ceil(diff1/frac)/stepLength;
       Serial.println(step1);
       if (step1 > 0) {
@@ -76,7 +76,7 @@ void shmove(){
       }
       cl1 += step1*stepLength;
     }
-    if (!(cl2 < dl2 - stepLength) || !(cl2 > dl2 + stepLength)) {
+    if ((cl2 < dl2 - stepLength) || (cl2 > dl2 + stepLength)) {
       int step2 = (int) ceil(diff2/frac)/stepLength;
       Serial.println(step2);
       if (step2 > 0) {

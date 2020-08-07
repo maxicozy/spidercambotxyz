@@ -13,15 +13,15 @@ float cl3 = 2630.00;
 float cl4 = 2630.00;
 float cl5 = 1700.00;
 
-float dl1;
-float dl2;
-float dl3;
-float dl4;
-float dl5;
+float dl1 = cl1;
+float dl2 = cl2;
+float dl3 = cl3;
+float dl4 = cl4;
+float dl5 = cl5;        
 
 const int frac = 250;
 const float stepLength = 2.62;
-const float schmalzStepLength = 30/384;
+const float schmalzStepLength = 0.625;
 
 const int stepsPerRevolution = 48;  // change this to fit the number of steps per revolution
 // for your motor
@@ -123,9 +123,9 @@ void loop() {
       cl4 -= stepLength;
       delay(10);
     }
-    if (cl5 < dl5 - schmalzStepLength*8) {
+    if (cl5 < dl5 - schmalzStepLength) {
       digitalWrite(2, HIGH);
-      cl5 += schmalzStepLength*8;
+      cl5 += schmalzStepLength;
       for (int i = 0; i<=8; i++) {
         digitalWrite(3, HIGH);
         delay(1);
@@ -133,9 +133,9 @@ void loop() {
         delay(1);
       }
     }
-    if (cl5 > dl5  + schmalzStepLength*8) {
+    if (cl5 > dl5  + schmalzStepLength) {
       digitalWrite(2, LOW);
-      cl1 -= schmalzStepLength*8;
+      cl5 -= schmalzStepLength;
       for (int i = 0; i<=8; i++) {
         digitalWrite(3, HIGH);
         delay(1);
